@@ -1,0 +1,57 @@
+#! /ucrt64/bin/vvp
+:ivl_version "13.0 (stable)" "(v13_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "X:\msys2\ucrt64\lib\ivl\system.vpi";
+:vpi_module "X:\msys2\ucrt64\lib\ivl\vhdl_sys.vpi";
+:vpi_module "X:\msys2\ucrt64\lib\ivl\vhdl_textio.vpi";
+:vpi_module "X:\msys2\ucrt64\lib\ivl\v2005_math.vpi";
+:vpi_module "X:\msys2\ucrt64\lib\ivl\va_math.vpi";
+S_000001243f6fcc50 .scope module, "tb_xor_gate" "tb_xor_gate" 2 1;
+ .timescale 0 0;
+v000001243f6f5b80_0 .var "a", 0 0;
+v000001243f6f5c20_0 .var "b", 0 0;
+v000001243f6f5cc0_0 .net "y", 0 0, L_000001243f6e60e0;  1 drivers
+S_000001243f6fcde0 .scope module, "dut" "xor_gate" 2 7, 3 1 0, S_000001243f6fcc50;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+L_000001243f6e60e0 .functor XOR 1, v000001243f6f5b80_0, v000001243f6f5c20_0, C4<0>, C4<0>;
+v000001243f6fc660_0 .net "a", 0 0, v000001243f6f5b80_0;  1 drivers
+v000001243f6fc700_0 .net "b", 0 0, v000001243f6f5c20_0;  1 drivers
+v000001243f6be830_0 .net "y", 0 0, L_000001243f6e60e0;  alias, 1 drivers
+    .scope S_000001243f6fcc50;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "xor_gate_wave.vcd" {0 0 0};
+    %vpi_call 2 15 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001243f6fcc50 {0 0 0};
+    %vpi_call 2 16 "$monitor", "time=%0t a=%b b=%b y=%b", $time, v000001243f6f5b80_0, v000001243f6f5c20_0, v000001243f6f5cc0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001243f6f5b80_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001243f6f5c20_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001243f6f5b80_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001243f6f5c20_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001243f6f5b80_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001243f6f5c20_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001243f6f5b80_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001243f6f5c20_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 23 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_xor_gate.v";
+    "xor_gate.v";

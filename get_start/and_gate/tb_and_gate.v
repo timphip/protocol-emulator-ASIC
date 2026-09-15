@@ -1,3 +1,4 @@
+// `timescale 1ns/1ps
 module tb_and_gate;
 
 reg a;
@@ -11,6 +12,8 @@ and_gate dut (
 );
 
 initial begin
+    $dumpfile("and_gate_wave.vcd");
+    $dumpvars(0, tb_and_gate);
     $monitor("time=%0t a=%b b=%b y=%b", $time, a, b, y);
 
     a = 0; b = 0; #10;
